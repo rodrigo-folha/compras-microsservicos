@@ -7,14 +7,13 @@ import br.com.rodrigofolha.pedidos.model.ErroResposta;
 import br.com.rodrigofolha.pedidos.model.Pedido;
 import br.com.rodrigofolha.pedidos.model.exception.ItemNaoEcontradoException;
 import br.com.rodrigofolha.pedidos.model.exception.ValidationException;
+import br.com.rodrigofolha.pedidos.publisher.DetalhePedidoMapper;
+import br.com.rodrigofolha.pedidos.publisher.representation.DetalhePedidoRepresentation;
 import br.com.rodrigofolha.pedidos.service.PedidoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 @RestController()
@@ -23,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class PedidoController {
     private final PedidoService service;
     private final PedidoMapper mapper;
+    private final DetalhePedidoMapper detalhePedidoMapper;
 
     @PostMapping
     public ResponseEntity<Object> criar(@RequestBody NovoPedidoDTO dto) {
@@ -46,4 +46,14 @@ public class PedidoController {
             return ResponseEntity.badRequest().body(erro);
         }
     }
+
+    @GetMapping("{codigo}")
+    public ResponseEntity<DetalhePedidoRepresentation> obterDetalhesPedido(@PathVariable("codigo") Long codigo) {
+        return service
+                .carregarDadosCompletosPedido(codigo)
+                .map(detalhePedidoMapper::map)
+                .map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
 }

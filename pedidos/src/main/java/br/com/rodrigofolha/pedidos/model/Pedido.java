@@ -1,5 +1,6 @@
 package br.com.rodrigofolha.pedidos.model;
 
+import br.com.rodrigofolha.pedidos.client.represantation.ClienteRepresentation;
 import br.com.rodrigofolha.pedidos.model.enums.DadosPagamento;
 import br.com.rodrigofolha.pedidos.model.enums.StatusPedido;
 import jakarta.persistence.*;
@@ -50,4 +51,7 @@ public class Pedido {
 
     @OneToMany(mappedBy = "pedido")
     private List<ItemPedido> itens;
+
+    @Transient
+    private ClienteRepresentation dadosCliente;
 }
