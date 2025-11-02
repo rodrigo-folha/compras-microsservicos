@@ -19,7 +19,7 @@ services:
       PGADMIN_DEFAULT_EMAIL: admin@rodrigofolha.com
       PGADMIN_DEFAULT_PASSWORD: rodrigofolha
     ports:
-      - 8083:80
+      - 8089:80
     volumes:
       - icompras-pgadmin-data:/var/lib/pgadmin
     networks:
