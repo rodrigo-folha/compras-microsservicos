@@ -22,4 +22,8 @@ public class ProdutoService {
         return respository.findById(codigo);
     }
 
+    public void deletar(Produto produto) {
+        produto.setAtivo(false);
+        respository.save(produto);
+    }
 }

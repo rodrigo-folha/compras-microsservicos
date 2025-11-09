@@ -1,6 +1,6 @@
 package br.com.rodrigofolha.icompras.faturamento.subscriber;
 
-import br.com.rodrigofolha.icompras.faturamento.GeradorNotaFiscalService;
+import br.com.rodrigofolha.icompras.faturamento.service.GeradorNotaFiscalService;
 import br.com.rodrigofolha.icompras.faturamento.mapper.PedidoMapper;
 import br.com.rodrigofolha.icompras.faturamento.model.Pedido;
 import br.com.rodrigofolha.icompras.faturamento.subscriber.representation.DetalhePedidoRepresentation;

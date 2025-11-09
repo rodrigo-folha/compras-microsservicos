@@ -11,11 +11,16 @@ spring:
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
     show-sql: true
     properties:
       hibernate:
         format_sql: true
+  kafka:
+    bootstrap-servers: 'http://localhost:29092'
+    consumer:
+      group-id: icompras-atualizacao-pedido
+      auto-offset-reset: earliest
 
 icompras:
   pedidos:
