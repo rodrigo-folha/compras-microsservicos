@@ -16,7 +16,7 @@ A arquitetura é composta pelos seguintes microserviços e componentes de infrae
 | **Clientes** | Spring Boot, JPA, PostgreSQL | Serviço responsável pelo gerenciamento de dados dos clientes. |
 | **Produtos** | Spring Boot, JPA, PostgreSQL | Serviço responsável pelo gerenciamento do catálogo de produtos. |
 | **Pedidos** | Spring Boot, Kafka | Serviço central que recebe a criação de pedidos e coordena o fluxo de eventos. |
-| **Faturamento** | Spring Boot, Kafka, MinIO | Serviço que processa o faturamento do pedido após a confirmação de pagamento. |
+| **Faturamento** | Spring Boot, Kafka, JasperReport, MinIO | Serviço que processa o faturamento do pedido após a confirmação de pagamento. |
 | **Logística** | Spring Boot, Kafka | Serviço que gerencia o rastreamento e o envio do pedido. |
 | **Apache Kafka** | Docker Compose | Message broker para comunicação assíncrona entre os microserviços. |
 | **Zookeeper** | Docker Compose | Gerenciador de coordenação para o cluster Kafka. |
